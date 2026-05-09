@@ -1,0 +1,347 @@
+{
+  "_meta": {
+    "name": "Bali Corridor Yields — Quarterly Retrospective",
+    "version": "1.0.0",
+    "lastUpdated": "2026-05-09",
+    "license": "CC-BY-4.0",
+    "attribution": "Bali Villa Select editorial desk",
+    "purpose": "Track quarter-over-quarter shifts in corridor-level yields, ADR, and occupancy. Use for trend analysis and underwrite-side seasonality calibration.",
+    "scope": "Major Bali sub-zones only. Minor sub-zones tracked but not necessarily updated each quarter. Phuket retrospective TBD (insufficient direct data quarter-on-quarter at confidence level we maintain for Bali).",
+    "delta_methodology": "Each `delta` field shows quarter-over-quarter change in PERCENTAGE POINTS for yield/occupancy fields, or in DOLLARS for ADR/price fields. Negative values are decreases.",
+    "interpretation_guide": "Two consecutive quarters of yield decline at -0.5pp or more = structural softening, re-evaluate underwrite. ADR drift inside ±10% is seasonal noise. Occupancy drift inside ±3pp is seasonal noise."
+  },
+
+  "quarters": [
+    {
+      "quarter": "Q4-2025",
+      "periodCovered": "2025-10-01 to 2025-12-31",
+      "snapshotDate": "2026-01-15",
+      "narrative": "Q4 2025 reflects the late-2025 plateau across Bali corridors. Berawa peaked early in the quarter, then softened as Pererenan absorbed marginal demand. Echo Beach posted highest occupancy of the year (digital-nomad winter inflow). Uluwatu clifftop saw a modest pullback as luxury arrivals slowed.",
+      "snapshots": {
+        "Canggu/Berawa": {
+          "grossYieldMid": 13.0,
+          "netYieldMid": 8.5,
+          "occupancyMid": 76,
+          "adrPeakMid": 380
+        },
+        "Canggu/Pererenan": {
+          "grossYieldMid": 11.8,
+          "netYieldMid": 7.7,
+          "occupancyMid": 73,
+          "adrPeakMid": 320
+        },
+        "Canggu/Echo Beach / Batu Bolong": {
+          "grossYieldMid": 11.0,
+          "netYieldMid": 7.2,
+          "occupancyMid": 79,
+          "adrPeakMid": 280
+        },
+        "Bukit/Uluwatu Clifftop": {
+          "grossYieldMid": 12.0,
+          "netYieldMid": 7.8,
+          "occupancyMid": 70,
+          "adrPeakMid": 510
+        },
+        "Bukit/Bingin / Padang Padang": {
+          "grossYieldMid": 11.7,
+          "netYieldMid": 7.6,
+          "occupancyMid": 74,
+          "adrPeakMid": 360
+        },
+        "Bukit/Nusa Dua": {
+          "grossYieldMid": 8.8,
+          "netYieldMid": 5.7,
+          "occupancyMid": 76,
+          "adrPeakMid": 350
+        },
+        "Seminyak/Petitenget Premium": {
+          "grossYieldMid": 10.8,
+          "netYieldMid": 7.0,
+          "occupancyMid": 77,
+          "adrPeakMid": 360
+        },
+        "Ubud/Ubud Central": {
+          "grossYieldMid": 9.7,
+          "netYieldMid": 6.3,
+          "occupancyMid": 75,
+          "adrPeakMid": 260
+        },
+        "Sanur/Sanur Beach": {
+          "grossYieldMid": 8.2,
+          "netYieldMid": 5.3,
+          "occupancyMid": 75,
+          "adrPeakMid": 230
+        }
+      }
+    },
+
+    {
+      "quarter": "Q1-2026",
+      "periodCovered": "2026-01-01 to 2026-03-31",
+      "snapshotDate": "2026-04-15",
+      "narrative": "Q1 2026 confirms the corridor-wide softening that started in Q4 2025. Berawa premium pulled back another 0.5-1.0pp as new 1BR off-plan supply hit. Pererenan held best of Canggu — yield-arbitrage thesis playing out. Bingin saturated with 1BR off-plan; ADR softened 5-8%. Nusa Dua continued its low-variance behaviour. Wellness corridors (Ubud) held steadiest — longer-stay model less exposed to short-term ADR pressure.",
+      "snapshots": {
+        "Canggu/Berawa": {
+          "grossYieldMid": 12.5,
+          "netYieldMid": 8.0,
+          "occupancyMid": 75,
+          "adrPeakMid": 365,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.5,
+            "netYieldMid": -0.5,
+            "occupancyMid": -1,
+            "adrPeakMid": -15
+          }
+        },
+        "Canggu/Pererenan": {
+          "grossYieldMid": 11.7,
+          "netYieldMid": 7.7,
+          "occupancyMid": 73,
+          "adrPeakMid": 315,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.1,
+            "netYieldMid": 0.0,
+            "occupancyMid": 0,
+            "adrPeakMid": -5
+          }
+        },
+        "Canggu/Echo Beach / Batu Bolong": {
+          "grossYieldMid": 10.5,
+          "netYieldMid": 6.9,
+          "occupancyMid": 78,
+          "adrPeakMid": 270,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.5,
+            "netYieldMid": -0.3,
+            "occupancyMid": -1,
+            "adrPeakMid": -10
+          }
+        },
+        "Bukit/Uluwatu Clifftop": {
+          "grossYieldMid": 11.5,
+          "netYieldMid": 7.5,
+          "occupancyMid": 69,
+          "adrPeakMid": 500,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.5,
+            "netYieldMid": -0.3,
+            "occupancyMid": -1,
+            "adrPeakMid": -10
+          }
+        },
+        "Bukit/Bingin / Padang Padang": {
+          "grossYieldMid": 11.0,
+          "netYieldMid": 7.2,
+          "occupancyMid": 73,
+          "adrPeakMid": 340,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.7,
+            "netYieldMid": -0.4,
+            "occupancyMid": -1,
+            "adrPeakMid": -20
+          }
+        },
+        "Bukit/Nusa Dua": {
+          "grossYieldMid": 8.6,
+          "netYieldMid": 5.6,
+          "occupancyMid": 76,
+          "adrPeakMid": 350,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.2,
+            "netYieldMid": -0.1,
+            "occupancyMid": 0,
+            "adrPeakMid": 0
+          }
+        },
+        "Seminyak/Petitenget Premium": {
+          "grossYieldMid": 10.5,
+          "netYieldMid": 6.8,
+          "occupancyMid": 76,
+          "adrPeakMid": 355,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.3,
+            "netYieldMid": -0.2,
+            "occupancyMid": -1,
+            "adrPeakMid": -5
+          }
+        },
+        "Ubud/Ubud Central": {
+          "grossYieldMid": 9.6,
+          "netYieldMid": 6.2,
+          "occupancyMid": 75,
+          "adrPeakMid": 258,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.1,
+            "netYieldMid": -0.1,
+            "occupancyMid": 0,
+            "adrPeakMid": -2
+          }
+        },
+        "Sanur/Sanur Beach": {
+          "grossYieldMid": 8.0,
+          "netYieldMid": 5.2,
+          "occupancyMid": 74,
+          "adrPeakMid": 225,
+          "delta_vs_prior": {
+            "grossYieldMid": -0.2,
+            "netYieldMid": -0.1,
+            "occupancyMid": -1,
+            "adrPeakMid": -5
+          }
+        }
+      }
+    }
+  ],
+
+  "annual_snapshots": [
+    {
+      "year": "2025",
+      "periodCovered": "2025-01-01 to 2025-12-31",
+      "snapshotDate": "2026-01-31",
+      "narrative": "2025 was the consolidation year for Bali corridor yields. Berawa premium peaked mid-year then softened as new 1BR off-plan supply hit the market. Pererenan emerged as the yield-arbitrage standout — held its ground while neighbours softened. Bukit clifftop premium held its absolute revenue but compressed on a yield-percent basis as entry prices climbed past $1.5M. Wellness/Ubud remained the single most stable corridor. Phuket recovered fully from late-2024 softness on Chinese tourism return.",
+      "snapshots": {
+        "Canggu/Berawa": {
+          "grossYieldFullYearMid": 13.2,
+          "netYieldFullYearMid": 8.6,
+          "occupancyAvg": 76,
+          "adrPeakAvg": 385,
+          "adrLowAvg": 195,
+          "annualRevenuePerVilla2BR": 89000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": -0.5,
+            "occupancyAvg": -1
+          }
+        },
+        "Canggu/Pererenan": {
+          "grossYieldFullYearMid": 11.9,
+          "netYieldFullYearMid": 7.7,
+          "occupancyAvg": 73,
+          "adrPeakAvg": 322,
+          "adrLowAvg": 158,
+          "annualRevenuePerVilla2BR": 62000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": 0.4,
+            "occupancyAvg": 2
+          }
+        },
+        "Canggu/Echo Beach / Batu Bolong": {
+          "grossYieldFullYearMid": 11.0,
+          "netYieldFullYearMid": 7.2,
+          "occupancyAvg": 79,
+          "adrPeakAvg": 280,
+          "adrLowAvg": 150,
+          "annualRevenuePerVilla2BR": 51000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": -0.3,
+            "occupancyAvg": 0
+          }
+        },
+        "Bukit/Uluwatu Clifftop": {
+          "grossYieldFullYearMid": 12.0,
+          "netYieldFullYearMid": 7.8,
+          "occupancyAvg": 70,
+          "adrPeakAvg": 510,
+          "adrLowAvg": 240,
+          "annualRevenuePerVilla3BR": 122000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": -1.0,
+            "occupancyAvg": -2
+          }
+        },
+        "Bukit/Bingin / Padang Padang": {
+          "grossYieldFullYearMid": 11.6,
+          "netYieldFullYearMid": 7.5,
+          "occupancyAvg": 74,
+          "adrPeakAvg": 360,
+          "adrLowAvg": 190,
+          "annualRevenuePerVilla2BR": 64000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": -0.2,
+            "occupancyAvg": 1
+          }
+        },
+        "Bukit/Nusa Dua": {
+          "grossYieldFullYearMid": 8.7,
+          "netYieldFullYearMid": 5.7,
+          "occupancyAvg": 76,
+          "adrPeakAvg": 350,
+          "adrLowAvg": 185,
+          "annualRevenuePerVilla2BR": 67000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": 0.0,
+            "occupancyAvg": 0
+          }
+        },
+        "Seminyak/Petitenget Premium": {
+          "grossYieldFullYearMid": 10.7,
+          "netYieldFullYearMid": 7.0,
+          "occupancyAvg": 77,
+          "adrPeakAvg": 360,
+          "adrLowAvg": 185,
+          "annualRevenuePerVilla2BR": 70000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": -0.4,
+            "occupancyAvg": 0
+          }
+        },
+        "Ubud/Ubud Central": {
+          "grossYieldFullYearMid": 9.6,
+          "netYieldFullYearMid": 6.2,
+          "occupancyAvg": 74,
+          "adrPeakAvg": 258,
+          "adrLowAvg": 135,
+          "annualRevenuePerVilla2BR": 42000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": 0.1,
+            "occupancyAvg": 1
+          }
+        },
+        "Sanur/Sanur Beach": {
+          "grossYieldFullYearMid": 8.1,
+          "netYieldFullYearMid": 5.3,
+          "occupancyAvg": 75,
+          "adrPeakAvg": 230,
+          "adrLowAvg": 120,
+          "annualRevenuePerVilla2BR": 38000,
+          "yoyDelta": {
+            "grossYieldFullYearMid": 0.0,
+            "occupancyAvg": 0
+          }
+        }
+      }
+    }
+  ],
+
+  "key_findings": [
+    {
+      "finding": "Corridor-wide gross yield softening of 0.2-0.7pp Q4→Q1",
+      "drivers": "1BR off-plan supply (esp. Bukit), Berawa pricing reaching local ceiling, broader supply absorption faster than demand growth",
+      "severity": "moderate",
+      "implication": "If Q2 2026 shows another 0.3-0.7pp drop, corridor is in structural softening cycle. Re-underwrite all in-flight deals at lower bound."
+    },
+    {
+      "finding": "Pererenan-arbitrage thesis holding",
+      "drivers": "Pererenan softened only 0.1pp vs Berawa's 0.5pp — relative position improving",
+      "severity": "positive",
+      "implication": "Pererenan now closer to par with Berawa on net basis. Reweighting recommendation: Pererenan share of new buys should increase quarter-over-quarter."
+    },
+    {
+      "finding": "Bingin 1BR saturation accelerating",
+      "drivers": "0.7pp gross yield drop is largest in dataset. ADR -$20/night peak suggests competitive over-supply.",
+      "severity": "warning",
+      "implication": "1BR off-plan in Bingin/Pecatu now operates at thin margins. Underwrite at lower bound. Avoid additional 1BR exposure in this corridor."
+    },
+    {
+      "finding": "Nusa Dua remains lowest-variance",
+      "drivers": "ITDC-managed environment + family-luxury demand insulates from short-term cycle",
+      "severity": "stable",
+      "implication": "Nusa Dua continues to behave as the corridor floor. Use as defensive allocation in any portfolio model."
+    },
+    {
+      "finding": "Wellness/Ubud corridor most resilient",
+      "drivers": "Longer average stay (5+ nights) reduces ADR-volatility exposure. Repeat-visitor rate buffers occupancy.",
+      "severity": "stable",
+      "implication": "Underweight ADR softening in Ubud underwrite — yield stability is structural, not cyclical."
+    }
+  ]
+}

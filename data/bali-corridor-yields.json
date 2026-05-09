@@ -1,0 +1,508 @@
+{
+  "_meta": {
+    "name": "Bali Corridor Yield Baselines (with Phuket secondary coverage)",
+    "version": "1.0.0",
+    "lastUpdated": "2026-05-09",
+    "refreshSchedule": "quarterly",
+    "currency": "USD",
+    "license": "CC-BY-4.0",
+    "attribution": "Bali Villa Select editorial desk",
+    "citationRequired": true,
+    "citationText": "Yield data sourced from Bali Villa Select corridor baselines (https://github.com/bali-villa-select/bali-corridor-yields), published under CC BY 4.0.",
+    "methodology": "https://balivillaselect.com/methodology",
+
+    "coverage": {
+      "primary": ["Bali"],
+      "secondary": ["Phuket"],
+      "tertiary": ["Lombok"]
+    },
+    "dataConfidence": {
+      "Bali": "high",
+      "Phuket": "medium",
+      "Lombok": "low",
+      "_doc": "high = direct AirDNA + transaction observation + Tier 1/2 sources cross-checked. medium = secondary research, Tier 2 institutional sources only, less direct transaction data. low = adjacent observation + Knight Frank/AirDNA overview only, minimal direct transaction data, ranges are directional rather than reliable."
+    },
+
+    "sourceTiers": {
+      "tier1": [
+        "Statistics Indonesia (BPS) — tourism arrivals and occupancy",
+        "Bank of Indonesia — exchange rates and macroeconomic indicators",
+        "BKPM — foreign investment frameworks",
+        "ATR/BPN — land title and leasehold framework",
+        "ITDC — Nusa Dua zoning and master plan"
+      ],
+      "tier2": [
+        "AirDNA — Bali short-term rental market data (primary)",
+        "Knight Frank Asia Pacific — residential research",
+        "Global Property Guide — Indonesia + Thailand rental yields",
+        "Bali Tourism Board — occupancy benchmarks",
+        "Phuket Provincial Tourism Office — Phuket arrivals data"
+      ],
+      "tier3": [
+        "Direct observation of partner-agency transaction patterns (cross-checked against Tier 1/2)"
+      ]
+    },
+
+    "definitions": {
+      "tier": "Editorial classification of the sub-zone within its corridor (premium / mid-tier / emerging / etc.)",
+      "grossYieldRange": "Stabilised year-2 gross rental yield range, percent of purchase price. Reflects 2BR median product type.",
+      "netYieldRange": "Net yield after the typical 25-35% gross-to-net cost gap (management, OTA fees, maintenance, taxes)",
+      "occupancyRange": "Year-blended occupancy percentage for well-managed properties",
+      "adrPeak": "Average daily rate during peak season (Jul-Aug, Dec-Jan in Bali; Dec-Mar in Phuket) in USD",
+      "adrShoulder": "Average daily rate during shoulder season in USD",
+      "adrLow": "Average daily rate during low season in USD",
+      "entryPriceRange": "Typical purchase price for the predominant product type in the sub-zone (USD)",
+      "predominantBedroomMix": "What configurations actually trade in this sub-zone — informs which bedroom-yield-adjustment to apply",
+      "notes": "Editorial commentary on what drives yield and key trade-offs"
+    },
+
+    "year1Stabilisation": "Year-1 yields typically deliver 60-75% of stabilised values during the review-build period. Underwrite at the lower bound for new villas.",
+    "grossToNetGap": "25-35% of gross revenue is consumed by operating costs (property management 15-25%, OTA commission 15-18%, maintenance 5-8%, utilities 3-5%, property tax <1%, pool & garden 2-3%, insurance 0.5-1%).",
+
+    "bedroomYieldAdjustments": {
+      "_doc": "Sub-zone yield ranges in this dataset reflect 2BR median (the most-traded product type). For other bedroom counts, apply these systemic deltas to the sub-zone's grossYieldRange.",
+      "1BR": {
+        "label": "Entry-tier yield product",
+        "grossYieldDelta": [-3, -2],
+        "occupancyDelta": [-3, 0],
+        "adrCapPercentOf2BR": [55, 70],
+        "notes": "ADR caps lower (typically $130-200/night peak vs 2BR's $250-400 in Bali, lower in Phuket). Operating drag higher — pool/garden/cleaning costs roughly same as 2BR. Operational cost ratio worse. Best as cheap entry capital, not as primary yield play."
+      },
+      "2BR": {
+        "label": "Sweet spot — reference baseline",
+        "grossYieldDelta": [0, 0],
+        "occupancyDelta": [0, 0],
+        "adrCapPercentOf2BR": [100, 100],
+        "notes": "Reference baseline. All sub-zone numbers in this dataset reflect 2BR median. Highest occupancy (~75-80%), broadest renter pool, deepest resale market. Best yield-to-effort ratio."
+      },
+      "3BR": {
+        "label": "Family / friend-group product",
+        "grossYieldDelta": [-2, -1],
+        "occupancyDelta": [-7, -3],
+        "adrCapPercentOf2BR": [130, 165],
+        "notes": "ADR moves up but not proportionally to bedroom count. Occupancy drops as renter pool narrows (multi-room bookings). Net yield often equals 2BR because management fees are absolute on higher revenue."
+      },
+      "4BR+": {
+        "label": "Lifestyle product, not yield product",
+        "grossYieldDelta": [-4, -2],
+        "occupancyDelta": [-15, -7],
+        "adrCapPercentOf2BR": [150, 220],
+        "notes": "Multi-room booking requirement narrows pool. Operational complexity raises absolute costs. Occupancy 55-65%. Consider for lifestyle hold or appreciation play, not for yield optimisation."
+      }
+    },
+
+    "phuketSeasonality": {
+      "_doc": "Phuket and Bali have inverted peak seasons. Bali peak: July-August + December-January. Phuket peak: December-March (high-season tourism). Plan operator and pricing model accordingly.",
+      "Bali": { "peak": "Jul-Aug, Dec-Jan", "shoulder": "Sep-Oct, Apr-May", "low": "Feb-Mar, Nov" },
+      "Phuket": { "peak": "Dec-Mar", "shoulder": "Apr-May, Oct-Nov", "low": "Jun-Sep (monsoon)" }
+    },
+
+    "phuketOwnershipNote": "Phuket ownership for foreign buyers differs structurally from Bali. Foreign buyers can directly own condominiums (capped at 49% of building floor area). Villa land ownership requires Thai company structuring (similar to Indonesian PMA, but different). All Phuket numbers in this dataset assume foreigner-eligible product (foreign-quota condo or company-held villa).",
+
+    "currencyOverlay": {
+      "_doc": "All yield, ADR, and price values in this dataset are USD-denominated. For IDR/THB-domiciled investors or buyers using non-USD funding, apply the FX overlay below to translate yield to your home currency. Foreign buyers using USD for acquisition: rental income remains USD-stable, but acquisition cost compresses or expands with USD strength.",
+      "USD_to_IDR": {
+        "reference_period": "2025 annual average",
+        "value": 16200,
+        "range_2025": [15800, 16700],
+        "trend": "IDR weakened ~3-5% against USD over 2025",
+        "investor_implication": "USD-funded buyers gained 3-5% acquisition discount over the year. IDR-domiciled investors saw USD-denominated yields translate to higher IDR yields by ~3-5pp on translation gain alone."
+      },
+      "USD_to_THB": {
+        "reference_period": "2025 annual average",
+        "value": 35.5,
+        "range_2025": [33.0, 37.0],
+        "trend": "THB largely range-bound, modest weakening late 2025",
+        "investor_implication": "Phuket USD-denominated yields translate to THB with low FX volatility. Currency risk is the smallest variable in the underwrite for THB-funded buyers."
+      },
+      "yield_calculation_note": "Gross yield = annual rental revenue (USD) ÷ purchase price (USD). For non-USD-domiciled investors, both numerator and denominator should be translated at consistent FX before computing yield to avoid spurious gain or loss attributed to FX rather than property performance.",
+      "hedging_note": "Most foreign Bali/Phuket buyers do not actively hedge IDR/THB exposure. Operating revenue in USD (international STR platforms) and USD-stable management fees reduce hedging need. Currency exposure becomes meaningful at exit (selling in IDR/THB while reporting gains in USD or another base currency)."
+    },
+
+    "operatorQualityMultipliers": {
+      "_doc": "Sub-zone yield ranges in this dataset reflect the median operator. The yield gap between top-quartile and bottom-quartile operators is 30-40pp percentage. Operator quality is the largest single yield-influencing variable within a sub-zone — larger than corridor positioning at the same purchase price. Apply these multipliers to sub-zone grossYieldRange to estimate yield by operator tier.",
+      "top_quartile": {
+        "label": "Top-quartile operator",
+        "yield_multiplier": [1.15, 1.30],
+        "characteristics": [
+          "Direct-booking infrastructure: 35-50% of revenue moves through operator's own website / direct enquiries, bypassing 15-18% OTA commission",
+          "Dynamic pricing software (PriceLabs, Wheelhouse, Beyond Pricing) updating daily rates against competitor demand",
+          "Repeat-guest email funnels with 10-25% repeat-booking rate at 85-95% of OTA rate, no commission",
+          "Brand presence: Instagram + dedicated website with direct-booking capability, regular content production",
+          "Annual photography refresh — re-shoot every 12 months minimum",
+          "Aggressive off-season pricing reactivity to preserve occupancy at the cost of ADR"
+        ],
+        "typical_revenue_premium_vs_median": "15-30% absolute revenue premium per equivalent property"
+      },
+      "median": {
+        "label": "Median operator (dataset baseline)",
+        "yield_multiplier": [1.0, 1.0],
+        "characteristics": [
+          "OTA-dominant booking (Airbnb + Booking, 70-90% of revenue)",
+          "Quarterly rate adjustments rather than dynamic pricing",
+          "Limited repeat-guest tracking",
+          "OTA listing as primary brand surface",
+          "Photography refreshed every 2-3 years",
+          "Static off-season rates"
+        ],
+        "typical_revenue_premium_vs_median": "Reference baseline (1.0x)"
+      },
+      "bottom_quartile": {
+        "label": "Bottom-quartile operator",
+        "yield_multiplier": [0.65, 0.80],
+        "characteristics": [
+          "100% Airbnb-dependent — no direct-booking infrastructure",
+          "Fixed daily rates, updated annually or never",
+          "No repeat-guest tracking or marketing",
+          "Single Airbnb listing as only brand surface, no website",
+          "Day-one developer photos still in use after years",
+          "Hold rates in low season, accept empty calendars"
+        ],
+        "typical_revenue_premium_vs_median": "20-35% revenue discount versus median operator"
+      },
+      "operator_due_diligence_questions": [
+        "Last 12 months of property-level revenue data on a comparable villa (not portfolio average)",
+        "Direct-booking percentage of total revenue",
+        "Average review score across the operator's full portfolio",
+        "Cancellation rate on confirmed bookings (>5% is a yield-warning signal worth 2-3pp)"
+      ]
+    }
+  },
+
+  "Canggu": {
+    "Berawa": {
+      "tier": "premium",
+      "grossYieldRange": [11, 14],
+      "netYieldRange": [7, 9],
+      "occupancyRange": [70, 80],
+      "adrPeak": [300, 450],
+      "adrShoulder": [220, 320],
+      "adrLow": [150, 240],
+      "entryPriceRange": [550000, 800000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Walking-distance beach clubs (Finns, Atlas), highest premium villa concentration. Premium-tier 2BR clears $300-450/night peak. Trade-off: highest entry prices in Canggu."
+    },
+    "Pererenan": {
+      "tier": "yield-arbitrage",
+      "grossYieldRange": [10, 13],
+      "netYieldRange": [6.5, 8.5],
+      "occupancyRange": [68, 78],
+      "adrPeak": [250, 380],
+      "adrShoulder": [180, 270],
+      "adrLow": [120, 200],
+      "entryPriceRange": [400000, 650000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Best yield-to-entry-price ratio. ADRs 10-15% below Berawa, but entry prices 20-25% below — net cash-on-cash often beats Berawa."
+    },
+    "Echo Beach / Batu Bolong": {
+      "tier": "stable mid-tier",
+      "grossYieldRange": [9, 12],
+      "netYieldRange": [6, 8],
+      "occupancyRange": [75, 80],
+      "adrPeak": [220, 320],
+      "adrShoulder": [170, 240],
+      "adrLow": [110, 190],
+      "entryPriceRange": [350000, 550000],
+      "predominantBedroomMix": ["2BR"],
+      "notes": "Mature surf-tourism demand, strong digital-nomad monthly stays. Highest occupancy band (75-80%) but ADR caps below Berawa."
+    },
+    "Babakan": {
+      "tier": "emerging",
+      "grossYieldRange": [9, 11],
+      "netYieldRange": [5.5, 7],
+      "occupancyRange": [65, 75],
+      "adrPeak": [200, 300],
+      "adrShoulder": [150, 220],
+      "adrLow": [100, 180],
+      "entryPriceRange": [320000, 500000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Lifestyle proximity to Berawa at 15-20% lower entry prices. Sub-zone still settling; yields will likely converge to Echo Beach over 24 months."
+    },
+    "Canggu Beach": {
+      "tier": "stagnant mature",
+      "grossYieldRange": [9, 11],
+      "netYieldRange": [5.5, 7],
+      "occupancyRange": [68, 75],
+      "adrPeak": [200, 300],
+      "adrShoulder": [150, 220],
+      "adrLow": [100, 180],
+      "entryPriceRange": [350000, 550000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Structural maturity — ADR growth has stopped. Yield approximates cost of capital unless off-market deals at meaningful discount."
+    }
+  },
+
+  "Bukit": {
+    "Uluwatu Clifftop": {
+      "tier": "premium luxury",
+      "grossYieldRange": [9, 14],
+      "netYieldRange": [6, 9],
+      "occupancyRange": [62, 75],
+      "adrPeak": [350, 700],
+      "adrShoulder": [240, 480],
+      "adrLow": [160, 320],
+      "entryPriceRange": [700000, 1500000],
+      "predominantBedroomMix": ["3BR", "4BR+"],
+      "notes": "Honeymoon and luxury repeat-traveller demand. Highest absolute revenue per villa but narrower renter pool — occupancy slightly lower than Canggu."
+    },
+    "Bingin / Padang Padang": {
+      "tier": "surf premium",
+      "grossYieldRange": [10, 13],
+      "netYieldRange": [6.5, 8.5],
+      "occupancyRange": [68, 78],
+      "adrPeak": [280, 450],
+      "adrShoulder": [200, 320],
+      "adrLow": [140, 240],
+      "entryPriceRange": [450000, 750000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Surf-tourism magnet, high repeat-visitor rate. Strong shoulder-season performance from surf calendar. 1BR off-plan dominates current pipeline — apply 1BR yield adjustment for that product."
+    },
+    "Pecatu": {
+      "tier": "developer-heavy",
+      "grossYieldRange": [9, 12],
+      "netYieldRange": [6, 7.5],
+      "occupancyRange": [65, 75],
+      "adrPeak": [250, 380],
+      "adrShoulder": [180, 280],
+      "adrLow": [120, 200],
+      "entryPriceRange": [350000, 600000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Developer-led off-plan inventory dominates. Yield depends heavily on operator. Concentration risk — many similar new villas competing. 1BR off-plan most replicated SKU."
+    },
+    "Dreamland Beach": {
+      "tier": "scarcity premium",
+      "grossYieldRange": [10, 14],
+      "netYieldRange": [6.5, 9],
+      "occupancyRange": [65, 78],
+      "adrPeak": [300, 500],
+      "adrShoulder": [220, 360],
+      "adrLow": [150, 260],
+      "entryPriceRange": [600000, 1100000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Public-access constrained, structurally scarce. Premium oceanfront block reads as scarce inventory rather than developer supply. Highest scarcity premium on the Bukit."
+    },
+    "Jimbaran": {
+      "tier": "established tourism",
+      "grossYieldRange": [8, 11],
+      "netYieldRange": [5.5, 7.5],
+      "occupancyRange": [68, 76],
+      "adrPeak": [220, 350],
+      "adrShoulder": [160, 250],
+      "adrLow": [110, 180],
+      "entryPriceRange": [300000, 550000],
+      "predominantBedroomMix": ["3BR", "4BR+"],
+      "notes": "Mature seafood-restaurant tourism, family-friendly demand. Stable but capped ADR growth. Larger villas predominant."
+    },
+    "Nusa Dua": {
+      "tier": "luxury low-risk",
+      "grossYieldRange": [7, 10],
+      "netYieldRange": [4.5, 6.5],
+      "occupancyRange": [70, 80],
+      "adrPeak": [250, 450],
+      "adrShoulder": [180, 320],
+      "adrLow": [130, 240],
+      "entryPriceRange": [500000, 1200000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Anchored by Apurva Kempinski, ITDC-managed area. Highest occupancy stability in Bali. Family-luxury demand. Lowest yield ceiling but lowest variance."
+    }
+  },
+
+  "Seminyak": {
+    "Petitenget Premium": {
+      "tier": "premium mature",
+      "grossYieldRange": [9, 12],
+      "netYieldRange": [6, 8],
+      "occupancyRange": [73, 80],
+      "adrPeak": [280, 450],
+      "adrShoulder": [200, 320],
+      "adrLow": [140, 230],
+      "entryPriceRange": [500000, 800000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Nightlife and beach-club anchored. Strong year-blended occupancy. Premium villa supply tightening."
+    },
+    "Seminyak Central": {
+      "tier": "stable mature",
+      "grossYieldRange": [8, 11],
+      "netYieldRange": [5, 7],
+      "occupancyRange": [70, 78],
+      "adrPeak": [220, 350],
+      "adrShoulder": [160, 250],
+      "adrLow": [110, 180],
+      "entryPriceRange": [400000, 650000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Mature short-stay market. ADR growth has flattened as Canggu absorbed marginal demand."
+    },
+    "Kerobokan / Berawa Border": {
+      "tier": "transitional",
+      "grossYieldRange": [9, 12],
+      "netYieldRange": [5.5, 7.5],
+      "occupancyRange": [72, 80],
+      "adrPeak": [240, 380],
+      "adrShoulder": [170, 270],
+      "adrLow": [120, 200],
+      "entryPriceRange": [400000, 650000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Captures spillover demand from Berawa. Often best Seminyak-area yield."
+    }
+  },
+
+  "Ubud": {
+    "Ubud Central": {
+      "tier": "wellness mature",
+      "grossYieldRange": [8, 11],
+      "netYieldRange": [5, 7],
+      "occupancyRange": [70, 78],
+      "adrPeak": [200, 320],
+      "adrShoulder": [150, 230],
+      "adrLow": [100, 170],
+      "entryPriceRange": [300000, 550000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Yoga and wellness tourism, longer average stay (5+ nights). Lower ADR but higher repeat-visitor rate."
+    },
+    "Tegallalang / Rice Paddy": {
+      "tier": "scenic premium",
+      "grossYieldRange": [9, 12],
+      "netYieldRange": [5.5, 7.5],
+      "occupancyRange": [68, 76],
+      "adrPeak": [250, 400],
+      "adrShoulder": [180, 280],
+      "adrLow": [120, 200],
+      "entryPriceRange": [350000, 600000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Iconic rice-paddy view commands ADR premium. Concentration risk if view becomes obstructed."
+    }
+  },
+
+  "Sanur": {
+    "Sanur Beach": {
+      "tier": "stable family",
+      "grossYieldRange": [7, 9],
+      "netYieldRange": [4.5, 6],
+      "occupancyRange": [70, 78],
+      "adrPeak": [180, 280],
+      "adrShoulder": [130, 200],
+      "adrLow": [90, 150],
+      "entryPriceRange": [350000, 600000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Family and senior demographic, longer stays. Calm-water beach. Stable but low yield ceiling."
+    }
+  },
+
+  "Phuket": {
+    "_doc": "Phuket coverage is SECONDARY (data confidence: medium). Numbers are based on institutional research (Knight Frank, Global Property Guide, AirDNA Phuket overview) and editorial observation, not direct transaction-level data as for Bali. Apply with extra caution. Phuket peak season is Dec-Mar (inverted vs Bali). Foreign-ownership structure differs (49% foreign-quota condos OR Thai company-held villas).",
+
+    "Bang Tao / Laguna": {
+      "tier": "premium master-planned",
+      "grossYieldRange": [6, 9],
+      "netYieldRange": [4, 6],
+      "occupancyRange": [70, 78],
+      "adrPeak": [200, 400],
+      "adrShoulder": [150, 250],
+      "adrLow": [100, 180],
+      "entryPriceRange": [300000, 700000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Most-liquid Phuket corridor. Laguna Phuket as resort anchor (Banyan Tree, Angsana). Strong family + repeat-traveller demand. Foreign-quota condos available — preferred entry path for foreign buyers without Thai company. Per-sqm pricing $3,400-5,300."
+    },
+    "Surin / Cherngtalay": {
+      "tier": "premium beach",
+      "grossYieldRange": [5, 8],
+      "netYieldRange": [3.5, 5],
+      "occupancyRange": [68, 76],
+      "adrPeak": [250, 500],
+      "adrShoulder": [180, 300],
+      "adrLow": [120, 200],
+      "entryPriceRange": [350000, 900000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Mature premium beach corridor. Less liquid for condos than Bang Tao but stronger for villas. Catamaran Bay and Bang Tao sands extend the beach product. Higher ADR ceiling but narrower foreign-buyer eligibility."
+    },
+    "Patong": {
+      "tier": "urban mature",
+      "grossYieldRange": [6, 9],
+      "netYieldRange": [4, 6],
+      "occupancyRange": [72, 82],
+      "adrPeak": [80, 180],
+      "adrShoulder": [60, 120],
+      "adrLow": [40, 80],
+      "entryPriceRange": [150000, 400000],
+      "predominantBedroomMix": ["1BR"],
+      "notes": "Highest occupancy in Phuket due to budget tourism volume. Lowest per-night ADR. Very liquid resale. Party-tourism dependent — single-stay-night-of-arrival turnover model. Studio and 1BR condos predominant."
+    },
+    "Karon / Kata": {
+      "tier": "established beach",
+      "grossYieldRange": [5, 7],
+      "netYieldRange": [3, 5],
+      "occupancyRange": [70, 78],
+      "adrPeak": [120, 250],
+      "adrShoulder": [90, 180],
+      "adrLow": [70, 130],
+      "entryPriceRange": [200000, 500000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Family-friendly beach with mature tourism infrastructure. Lower noise and density than Patong. Stable but capped — ADR growth has flattened."
+    },
+    "Nai Harn / Rawai": {
+      "tier": "retirement-family",
+      "grossYieldRange": [5, 7],
+      "netYieldRange": [3, 4],
+      "occupancyRange": [65, 72],
+      "adrPeak": [100, 200],
+      "adrShoulder": [80, 150],
+      "adrLow": [60, 110],
+      "entryPriceRange": [200000, 450000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Long-term resident demographic, expat retirees. Less short-term tourism — many properties trade on long-term lease rather than nightly. Yields shown reflect short-term rental scenario; long-term lease yields run 4-5%."
+    },
+    "Layan / Kamala": {
+      "tier": "quiet premium",
+      "grossYieldRange": [5, 7],
+      "netYieldRange": [3, 5],
+      "occupancyRange": [65, 73],
+      "adrPeak": [200, 400],
+      "adrShoulder": [150, 280],
+      "adrLow": [100, 200],
+      "entryPriceRange": [400000, 800000],
+      "predominantBedroomMix": ["3BR", "4BR+"],
+      "notes": "Smaller premium beaches with less developer pressure. Premium-tier villas predominant. Less liquid resale than Bang Tao but higher discretion premium."
+    }
+  },
+
+  "Lombok": {
+    "_doc": "Lombok coverage is TERTIARY (data confidence: low). Numbers are based on adjacent-market observation, Knight Frank Lombok occasional reports, AirDNA Lombok overview, and editorial inference from Bali corridor patterns. Direct transaction-level observation is minimal. Treat ranges as DIRECTIONAL only — Lombok property markets remain less liquid and less transparent than Bali's. Apply with significant caution. Lombok seasonality: peak Jul-Sep + Dec-Jan, similar to Bali. Foreign-ownership uses Indonesian framework identical to Bali (Hak Sewa or PT PMA + HGB).",
+
+    "Selong Belanak / Kuta Lombok": {
+      "tier": "emerging surf",
+      "grossYieldRange": [6, 9],
+      "netYieldRange": [3.5, 5.5],
+      "occupancyRange": [55, 65],
+      "adrPeak": [120, 220],
+      "adrShoulder": [80, 150],
+      "adrLow": [50, 100],
+      "entryPriceRange": [200000, 400000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Emerging surf-tourism corridor. Comparable to early-2010s Bingin/Pererenan. Land prices significantly below Bali equivalents but liquidity is thin — exit at 5-7 years rather than 2-3 is realistic. Speculative-tier rather than yield-tier today; thesis depends on Lombok corridor maturing over 5-10 years."
+    },
+    "Senggigi": {
+      "tier": "established mature",
+      "grossYieldRange": [5, 7],
+      "netYieldRange": [3, 4.5],
+      "occupancyRange": [55, 65],
+      "adrPeak": [100, 200],
+      "adrShoulder": [70, 140],
+      "adrLow": [50, 90],
+      "entryPriceRange": [180000, 380000],
+      "predominantBedroomMix": ["2BR", "3BR"],
+      "notes": "Lombok's long-running tourism corridor; older infrastructure. Family-friendly demographic similar to Sanur but smaller market. Stable but capped — ADR has not grown materially in 5+ years. Yield holds because entry prices stayed flat, not because revenue grew."
+    },
+    "Gili Trawangan / Air / Meno": {
+      "tier": "island scarcity",
+      "grossYieldRange": [6, 8],
+      "netYieldRange": [3.5, 5],
+      "occupancyRange": [60, 70],
+      "adrPeak": [180, 350],
+      "adrShoulder": [120, 230],
+      "adrLow": [80, 150],
+      "entryPriceRange": [250000, 600000],
+      "predominantBedroomMix": ["1BR", "2BR"],
+      "notes": "Three small islands off Lombok's northwest coast. Boat-only access constrains supply (structural scarcity) but also operating complexity (delivery, staffing, fresh-water all import). Premium ADR for the constrained inventory but operating cost gap is wider than Bali — net yield runs 50-65% of gross rather than 65-75%. Foreign ownership available but title verification is materially harder than mainland Lombok."
+    }
+  }
+}
